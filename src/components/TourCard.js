@@ -27,38 +27,40 @@ const theme = createTheme({
   },
 });
 
-const TourCard = () => {
+const TourCard = ({ tour }) => {
   return (
     <Grid item xs={3}>
       <ThemeProvider theme={theme}>
         <Paper elevation={3}>
-          <img
-            alt='guitar'
-            className='img'
-            src='https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
-          />
+          <img alt='Tour' className='img' src={tour.image} />
           <Box paddingX={1}>
             <Typography component='h4' variant='subtitle1'>
-              John Mayer
+              {tour.name}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <AccessTime sx={{ width: 12.5 }} />
               <Typography variant='body2' component='p' margin-left={0.5}>
-                5 Hours
+                {tour.duration} hours
               </Typography>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'center' }} marginTop={3}>
-              <Rating name='read-only' value={4.5} readOnly precision={0.5} size='small'></Rating>
+              <Rating
+                name='read-only'
+                value={tour.rating}
+                readOnly
+                precision={0.5}
+                size='small'
+              ></Rating>
               <Typography variant='body2' component='p' margin-left={0.5}>
-                4.5
+                {tour.rating}
               </Typography>
               <Typography variant='body3' component='p' margin-left={0.5}>
-                (655 reviews)
+                ({tour.numberOfReviews} reviews)
               </Typography>
             </Box>
             <Box>
               <Typography variant='h6' component='h3' margin-top={0}>
-                From C $147
+                From C ${tour.price}
               </Typography>
             </Box>
           </Box>
